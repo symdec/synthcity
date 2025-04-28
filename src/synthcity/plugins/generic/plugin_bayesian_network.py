@@ -11,7 +11,7 @@ from typing import Any, List
 import numpy as np
 import pandas as pd
 import pgmpy.estimators as estimators
-from pgmpy.models import BayesianNetwork
+from pgmpy.models import DiscreteBayesianNetwork
 from pgmpy.sampling import BayesianModelSampling
 
 # synthcity absolute
@@ -169,7 +169,7 @@ class BayesianNetworkPlugin(Plugin):
 
         dag = self._get_dag(df)
 
-        network = BayesianNetwork(dag)
+        network = DiscreteBayesianNetwork(dag)
         network.fit(df)
 
         self.model = BayesianModelSampling(network)

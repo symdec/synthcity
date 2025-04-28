@@ -12,7 +12,7 @@ from typing import Any, List, Optional, Tuple
 import numpy as np
 import pandas as pd
 from pgmpy.factors.discrete.CPD import TabularCPD
-from pgmpy.models import BayesianNetwork
+from pgmpy.models import DiscreteBayesianNetwork
 from pgmpy.sampling import BayesianModelSampling
 from pydantic import validate_arguments
 from scipy.optimize import fsolve
@@ -119,7 +119,7 @@ class PrivBayes(Serializable):
 
         # create the network
         log.debug("[Privbayes] Create net")
-        self.network = BayesianNetwork()
+        self.network = DiscreteBayesianNetwork()
 
         for child, parents in self.dag:
             self.network.add_node(child)
